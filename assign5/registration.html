@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<script src="main.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1>Registration</h1>
+<hr>
+<form id="form1" method="post" action="registration.html">
+<table>
+<col align="right">
+<col align="left">
+<tr>
+	<td id="col1">
+		<span>User ID:</span>
+	</td>
+	<td>
+		<input type="text" id="userid" name="userid" required data-html="true" title="User ID Verification" data-toggle="popover" data-placement="right" data-trigger="focus" data-content='<p id="matchpwd" class="valid">Cannot match password</p>'>
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+		<span>Password:</span>
+	</td>
+	<td>
+		<!-- <input type="password" id="pwd1" name="pwd1" required data-html="true" title="Password Strength" data-toggle="popover" data-placement="right" data-trigger="focus"> -->
+		<input type="password" id="pwd1" name="pwd1" required data-html="true" title="Password Strength" data-toggle="popover" data-placement="right" data-trigger="focus" data-content='<p id="letter" class="invalid">1 <b>lowercase</b> letter</p>
+					<p id="capital" class="invalid">1 <b>capital (uppercase)</b> letter</p>
+					<p id="number" class="invalid">1 <b>number</b></p>
+					<p id="special" class="invalid">1 Special Character !#$%</p>
+					<p id="length" class="invalid">Minimum <b>8 characters</b></p>
+				    <p id="spaces" class="valid">No spaces</p>
+				    <p id="matchid" class="valid">Cannot match User ID</p>'>
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+		<span>Verify Password:</span>
+	</td>
+	<td>
+		<input type="password" id="pwd2" name="pwd2" required data-html="true" title="Password Verification" data-toggle="popover" data-placement="right" data-trigger="focus" data-content='<p id="pwdverify" class="invalid">Password Matches?</p>'>
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+		<span>Email Address:</span>
+	</td>
+	<td>
+		<input type="email" id="email1" name="email1" required>
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+		<span>Verify Email Address:</span>
+	</td>
+	<td>
+		<input type="email" id="email2" name="email2" required data-html="true" title="Email Verification" data-toggle="popover" data-placement="right" data-trigger="focus" data-content='<p id="emailverify" class="invalid">Email Matches?</p>'>
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+		<span>Security Question:</span>
+	</td>
+	<td>
+		<input list="sq1-list" id="sq1" name="sq1" required>
+		<datalist id="sq1-list">
+			<option value="Sum of 2+3 = ">
+			<option value="Sum of 100 + 200 =">
+			<option value="23 x 100 =">
+			<option value="Capital of India?">
+			<option value="Capital of USA?">
+		</datalist>
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+		<span>Security Answer:</span>
+	</td>
+	<td>
+		<input type="text" id="sa1" name="sa1" required>
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+		<span>Security Question:</span>
+	</td>
+	<td>
+		<input list="sq2-list" id="sq2" name="sq2" required>
+		<datalist id="sq2-list">
+			<option value="Sum of 2+3 = ">
+			<option value="Sum of 100 + 200 =">
+			<option value="23 x 100 =">
+			<option value="Capital of India?">
+			<option value="Capital of USA?">
+		</datalist>
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+		<span>Security Answer:</span>
+	</td>
+	<td>
+		<input type="text" id="sa2" name="sa2" required>
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+		<span>Mobile:</span>
+	</td>
+	<td>
+		<input type="tel" id="mobile" name="mobile">
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+		<span>Address:</span>
+	</td>
+	<td>
+		<input type="textarea" id="address" name="address">
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+
+	</td>
+	<td>
+		<p>Areas you may be interested in, please select one or more:</p>
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+		
+	</td>
+	<td>
+		<input type="textarea" id="interests" name="interests">
+	</td>
+</tr>
+<tr>
+	<td id="col1">
+		
+	</td>
+	<td class="button">
+		<input type="submit" id="register" name="register" value="Register">
+		<input type="reset">
+	</td>
+</tr>
+</table>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: 0px;
+    content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: 0px;
+    content: "✖";
+}
+
+#col1 {
+    text-align: right;
+    padding: 8px;
+}
+
+.button {
+    padding: 10px 0px;
+}
