@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	};
 
 	$('#form1').submit(function() {
-	    if( verifyInput() ) {
+	    if ( verifyInput() ) {
 			addUserData();
 		} else {
 			return false;
@@ -303,4 +303,21 @@ document.addEventListener("DOMContentLoaded", function() {
 	    return true;
 	});
 
+	// Online connection check
+	var status = document.getElementById("status");
+	
+	function updateOnlineStatus(event) {
+		var condition = navigator.onLine ? "online" : "offline";
+		status.className = condition;
+		status.innerHTML = condition.toUpperCase();
+
+		$("#status").show();
+		if (condition == "online") {
+			setTimeout(function(){$("#status").hide();}, 3000);
+		}
+	}
+
+	window.addEventListener('online',  updateOnlineStatus);
+	window.addEventListener('offline', updateOnlineStatus);
+	updateOnlineStatus();
 });
