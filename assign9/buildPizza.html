@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- https://loading.io/color/feature/Domino%27sPizza -->
+    <title>Build Your Own Pizza</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+    <h2>Build Your Own Pizza</h2>
+</div>
+
+<div class="container" style="margin-bottom: 30px;">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="js-progressBar progress" style="height:auto; margin-top: 20px;">
+                <div class="blockUI is-hidden js-blockUI"><!--  --></div> 
+                <div class="leftEndcap progress__step progress__step--static is-hidden@handheld" id="sizeCrust-end">(</div>
+                <button type="button" class="js-progressBarStep progress__step c-sizeCrust activeStep" id="sizeCrust-btn">Size &amp; Crust</button>
+
+                <div class="seperator progress__step progress__step--static activeSeperator" id="sizeCrust-sep">/</div>
+                <!-- <div class="seperator progress__step progress__step--static activeSeperator seperatorBoth">/</div> -->
+
+                <button type="button" class="js-progressBarStep progress__step c-cheeseSauce" id="cheeseSauce-btn">Cheese &amp; Sauce</button>
+                <!-- <button type="button" class="js-progressBarStep progress__step c-cheeseSauce activeStep" id="cheeseSauce">Cheese &amp; Sauce</button> -->
+
+                <div class="seperator progress__step progress__step--static" id="cheeseSauce-sep">/</div>
+                <!-- <div class="seperator progress__step progress__step--static activeSeperator">/</div> -->
+                <!-- <div class="seperator progress__step progress__step--static activeSeperator seperatorBoth">/</div> -->
+
+                <button type="button" class="js-progressBarStep progress__step c-toppings" id="toppings-btn">Toppings</button>
+                <!-- <button type="button" class="js-progressBarStep progress__step c-toppings activeStep" id="toppings">Toppings</button> -->
+
+                <div class="rightEndcap progress__step progress__step--static is-hidden@handheld" id="toppings-end">)</div>
+                <!-- <div class="rightEndcap progress__step progress__step--static is-hidden@handheld rightActiveEndcap">)</div> -->
+            </div>
+        </div>
+    </div>
+
+    <div id="next-step-area">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>CHOOSE SIZE &amp; CRUST</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3" style="border-right: thin solid #dddddd;">
+            <h5>HAND TOSSED</h5>
+            <p>Garlic-seasoned crust with a rich, buttery taste.</p>
+            <input type="radio" id="size-crust" name="size-crust" value="hand-tossed-small">Small (10")<br>
+            <input type="radio" id="size-crust" name="size-crust" value="hand-tossed-medium">Medium (12")<br>
+            <input type="radio" id="size-crust" name="size-crust" value="hand-tossed-large">Large (14")<br>
+            <input type="radio" id="size-crust" name="size-crust" value="hand-tossed-x-large">X-Large (16")<br>
+        </div>
+        <div class="col-sm-3" style="border-right: thin solid #dddddd;">
+            <h5>HANDMADE PAN</h5>
+            <p>Two layers of cheese, toppings to the edge, and a crust that bakes up golden and crispy with a buttery taste.</p>
+            <input type="radio" id="size-crust" name="size-crust" value="handmade-pan-medium">Medium (12")<br>
+        </div>
+        <div class="col-sm-3" style="border-right: thin solid #dddddd;">
+            <h5>CRUNCHY THIN CRUST</h5>        
+            <p>Thin enough for the optimum crispy to crunchy ratio.</p>
+            <input type="radio" id="size-crust" name="size-crust" value="crunchy-thin-crust-medium">Medium (12")<br>
+            <input type="radio" id="size-crust" name="size-crust" value="crunchy-thin-crust-large">Large (14")<br>
+        </div>
+        <div class="col-sm-3">
+            <h5>BROOKLYN STYLE</h5>        
+            <p>Hand stretched to be big, thin, and perfectly foldable.</p>
+            <input type="radio" id="size-crust" name="size-crust" value="brooklyn-style-large">Large (14")<br>
+            <input type="radio" id="size-crust" name="size-crust" value="brooklyn-style-x-large">X-Large (16")<br>
+        </div>
+        </div>
+        <div class="row" style="padding-top: 30px; padding-bottom: 30px;">
+        <div class="col-sm-3">
+            <h5>GLUTEN FREE CRUST</h5>        
+            <p>Domino's pizza made with a Gluten Free Crust.</p>
+            <input type="radio" id="size-crust" name="size-crust" value="gluten-free-crust-small">Small (10")<br>
+        </div>
+    </div>
+
+    <div class="row" style="padding-bottom: 30px;">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-info" id="next-step-btn">NEXT STEP <span class="glyphicon glyphicon-play"></span></button>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <button type="reset" class="btn btn-danger">CANCEL</button>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    </div>
+</div>
+
+</body>
+</html>

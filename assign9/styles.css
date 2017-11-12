@@ -1,0 +1,148 @@
+body {
+    background-color: #0f6491;
+}
+
+h1,h2,h3,h4,h5 {
+	color: #3388ff;
+	font-weight: bold;
+}
+
+.container {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    width: 90%;
+}
+
+#piechart {
+	/*border: 2px solid #000000;*/
+}
+
+#_dpz .is-hidden {
+    display: none;
+}
+
+.progress {
+    display: table;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+    position: relative
+}
+.progress__step {
+    font-family: DominosFont, Arial Narrow, Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    display: table-cell;
+    width: 229px;
+    -webkit-flex: 1 1;
+    -ms-flex: 1 1;
+    flex: 1 1;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px 0;
+    line-height: 66px;
+    font-size: 1.666666667em;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    height: 100%;
+    background: url(../images/bar.jpg) repeat-x 0 0;
+    margin: 0;
+    outline: 0;
+    box-shadow: none;
+    border: 0;
+    z-index: 1
+}
+.progress__step--static {
+    width: 40px;
+    text-align: left;
+    text-indent: -1000em;
+    overflow: hidden;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none
+}
+.progress .leftEndcap {
+    background: url(../images/left-endcap.jpg) no-repeat 0 0
+}
+.progress .rightEndcap {
+    background: url(../images/right-endcap.jpg) no-repeat 0 0
+}
+.progress .rightActiveEndcap {
+    background: url(../images/right-endcap-over.jpg) no-repeat 0 0
+}
+.progress .seperator {
+    background: url(../images/seperator.jpg) no-repeat 0 0
+}
+.progress .activeSeperator {
+    background: url(../images/seperator-over.jpg) no-repeat 0 0
+}
+.progress .seperatorBoth {
+    background: url(../images/seperator-both.jpg) no-repeat 0 0
+}
+.progress .activeStep {
+    background: url(../images/bar-over.jpg) repeat-x 0 0
+}
+
+#pizzaBuilderPage .blockUI,
+#trackerPage .blockUI,
+.card--confirmation-feedback .blockUI {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #fff;
+	opacity: .6;
+	filter: alpha(opacity=60);
+	z-index: 2
+}
+
+.blockUI {
+	background-color: #fff;
+	height: 100%;
+	left: 0;
+	opacity: .6;
+	position: absolute;
+	top: 0;
+	width: 100%
+}
+
+/*.btn, button, input[type=submit] {
+    font-family: DominosFont,Arial Narrow,Arial,Helvetica,sans-serif;
+    font-weight: 400;
+    display: inline-block;
+    box-sizing: border-box;
+    width: auto;
+    padding: .3125em .666666667em .25em;
+    margin: 2px 1px 3px;
+    border: 2px solid #fff;
+    border-radius: .25em;
+    vertical-align: middle;
+    position: relative;
+    font-size: 1.333333333em;
+    line-height: 1.333333333;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-shadow: 0 0 1px hsla(0,0%,100%,.3), 0 1px 1px rgba(0,0,0,.4);
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    background-color: #e3193b;
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    background-image: linear-gradient(180deg,hsla(0,0%,100%,.48) 0,hsla(0,0%,100%,0) 30%);
+    box-shadow: 0 1px 5px rgba(0,0,0,.56);
+    color: #fff;
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    cursor: pointer;
+}*/
+
+/*button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}*/
