@@ -111,7 +111,7 @@ h1,h2,h3,h4,h5 {
 	width: 100%
 }
 
-/*.btn, button, input[type=submit] {
+.btn, button, input[type=submit] {
     font-family: DominosFont,Arial Narrow,Arial,Helvetica,sans-serif;
     font-weight: 400;
     display: inline-block;
@@ -140,9 +140,9 @@ h1,h2,h3,h4,h5 {
     -ms-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
     cursor: pointer;
-}*/
+}
 
-/*button, html input[type=button], input[type=reset], input[type=submit] {
+button, html input[type=button], input[type=reset], input[type=submit] {
     -webkit-appearance: button;
     cursor: pointer;
-}*/
+}

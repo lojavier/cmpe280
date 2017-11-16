@@ -35,12 +35,15 @@ function loadOrderCartPage()
 		setActiveStep();
 
 		google.charts.load('current', {'packages':['corechart']});
-		google.charts.setOnLoadCallback(drawChart);
+		google.charts.setOnLoadCallback(drawPieChart);
+
+		google.charts.load('current', {'packages':['sankey']});
+      	google.charts.setOnLoadCallback(drawSankeyChart);
 	});
 }
 
-// Draw the chart and set the chart values
-function drawChart() {
+function drawPieChart() 
+{
 	var data = new google.visualization.DataTable();
 	data.addColumn('string', 'Topping');
     data.addColumn('number', 'Slices');
@@ -49,25 +52,34 @@ function drawChart() {
 		data.addRows([[toppings[i], 1]]);
 	}
 
-	// var data = google.visualization.arrayToDataTable([
-	// ['Pizza', 'Cheese+Toppings'],
-	// ['Work', 8],
-	// ['Eat', 2],
-	// ['TV', 4],
-	// ['Gym', 2],
-	// ['Sleep', 8]
-	// ]);
-
-	// Optional; add a title and set the width and height of the chart
 	var options = {
-		'title':'Your Pizza Stats',
-		'width':500, 
-		'height':400,
+		title: 'Pizza Pie Chart',
+		width: 500, 
+		height: 500,
 		is3D: true
 	};
 
-	// Display the chart inside the <div> element with id="piechart"
 	var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+	chart.draw(data, options);
+}
+
+function drawSankeyChart()
+{
+	var data = new google.visualization.DataTable();
+	data.addColumn('string', 'From');
+	data.addColumn('string', 'To');
+	data.addColumn('number', 'Weight');
+	for(var i = 0; i < toppings.length; i++)
+	{
+		data.addRows([[toppings[i], "pizza", 1]]);
+	}
+
+	var options = {
+		width: 300,
+		height: 400
+	};
+
+	var chart = new google.visualization.Sankey(document.getElementById('sankeychart'));
 	chart.draw(data, options);
 }
 

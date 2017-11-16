@@ -1,0 +1,101 @@
+{
+	"last_update": "November 14, 2017",
+	"reservoir_conditions" : [
+		{
+			"name": "Trinity Lake",
+			"latitude": 40.9673025,
+			"longitude": -122.67680410000003,
+			"max_capacity": 2448,
+			"percent_capacity": 71,
+			"percent_historical_avg": 110
+		},
+		{
+			"name": "Lake Shasta",
+			"latitude": 40.7170451,
+			"longitude": -122.41823090000003,
+			"max_capacity": 4552,
+			"percent_capacity": 69,
+			"percent_historical_avg": 118
+		},
+		{
+			"name": "Lake Oroville",
+			"latitude": 39.5624753,
+			"longitude": -121.45133140000002,
+			"max_capacity": 3538,
+			"percent_capacity": 33,
+			"percent_historical_avg": 55
+		},
+		{
+			"name": "Folsom Lake",
+			"latitude": 38.7292081,
+			"longitude": -121.11948410000002,
+			"max_capacity": 977,
+			"percent_capacity": 54,
+			"percent_historical_avg": 109
+		},
+		{
+			"name": "New Melones Lake",
+			"latitude": 37.9879337,
+			"longitude": -120.53548089999998,
+			"max_capacity": 2420,
+			"percent_capacity": 82,
+			"percent_historical_avg": 147
+		},
+		{
+			"name": "Don Pedro Reservoir",
+			"latitude": 37.73544260000001,
+			"longitude": -120.38390170000002,
+			"max_capacity": 2030,
+			"percent_capacity": 78,
+			"percent_historical_avg": 121
+		},
+		{
+			"name": "Lake McClure",
+			"latitude": 37.60191919999999,
+			"longitude": -120.26569549999999,
+			"max_capacity": 1025,
+			"percent_capacity": 64,
+			"percent_historical_avg": 146
+		},
+		{
+			"name": "San Luis Reservoir",
+			"latitude": 37.056069,
+			"longitude": -121.1137544,
+			"max_capacity": 2039,
+			"percent_capacity": 69,
+			"percent_historical_avg": 123
+		},
+		{
+			"name": "Millerton Lake",
+			"latitude": 37.0038661,
+			"longitude": -119.69047460000002,
+			"max_capacity": 520,
+			"percent_capacity": 61,
+			"percent_historical_avg": 154
+		},
+		{
+			"name": "Pine Flat Reservoir",
+			"latitude": 36.8321901,
+			"longitude": -119.32594219999999,
+			"max_capacity": 1000,
+			"percent_capacity": 45,
+			"percent_historical_avg": 127
+		},
+		{
+			"name": "Lake Perris",
+			"latitude": 33.85689999999999,
+			"longitude": -117.17449999999997,
+			"max_capacity": 131,
+			"percent_capacity": 45,
+			"percent_historical_avg": 59
+		},
+		{
+			"name": "Castaic Lake",
+			"latitude": 34.5258138,
+			"longitude": -118.60497720000001,
+			"max_capacity": 325,
+			"percent_capacity": 85,
+			"percent_historical_avg": 112
+		}
+	]
+}
