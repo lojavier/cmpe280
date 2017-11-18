@@ -22,10 +22,14 @@ function testAPI() {
 }
 
 function getPriceEstimates() {
+
+	var uber_server_token = "RUOqYOd-IgBcjFQ4J8mHc7ixW3vD9nRX3-f_Llrn";
+	var uber_estimates_url = "https://api.uber.com/v1.2/estimates/price?start_latitude="+start_latitude+"&start_longitude="+start_longitude+"&end_latitude="+end_latitude+"&end_longitude="+end_longitude+"&server_token="+uber_server_token;
+	
 	// alert(estimates_price_url);
 	var auth_tok = "Token " + uber_server_token;
 	$.ajax({
-		url: estimates_price_url,
+		url: uber_estimates_url,
 		type: "GET",
 		xhrFields: {
 			withCredentials: true
@@ -42,7 +46,7 @@ function getPriceEstimates() {
 			// xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization,Access-Control-Allow-Credentials');
 			// xhr.setRequestHeader('Access-Control-Allow-Headers', 'Credentials');
 			xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
-			// xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+			xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
 			// xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
 			xhr.setRequestHeader('Authorization', auth_tok);
 			xhr.setRequestHeader('Accept-Language', 'en_US');
@@ -143,26 +147,28 @@ function getUberEstimates() {
 
 	var uber_estimates_url = "https://api.uber.com/v1.2/estimates/price?start_latitude="+start_latitude+"&start_longitude="+start_longitude+"&end_latitude="+end_latitude+"&end_longitude="+end_longitude+"&server_token="+uber_server_token;
 
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
-	        var JSONObj = JSON.parse(this.responseText);
-	        document.getElementById("demo1").innerHTML = JSON.stringify(JSONObj);
-	        displayUberEstimates(JSONObj);
-	    }
-	};
-	xmlhttp.open("GET", "uberPrices.json", true);
-	xmlhttp.send();
+	// alert(uber_estimates_url);
 
 	// var xmlhttp = new XMLHttpRequest();
 	// xmlhttp.onreadystatechange = function() {
 	//     if (this.readyState == 4 && this.status == 200) {
 	//         var JSONObj = JSON.parse(this.responseText);
 	//         document.getElementById("demo1").innerHTML = JSON.stringify(JSONObj);
+	//         displayUberEstimates(JSONObj);
 	//     }
 	// };
-	// xmlhttp.open("GET", uber_estimates_url, true);
+	// xmlhttp.open("GET", "uberPrices.json", true);
 	// xmlhttp.send();
+
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	        var JSONObj = JSON.parse(this.responseText);
+	        document.getElementById("demo1").innerHTML = JSON.stringify(JSONObj);
+	    }
+	};
+	xmlhttp.open("GET", uber_estimates_url, true);
+	xmlhttp.send();
 
 }
 
@@ -241,26 +247,26 @@ function getLyftEstimates() {
 
 	var lyft_estimates_url = "https://api.lyft.com/v1/cost?start_lat=37.312014&start_lat="+start_latitude+"&start_lng="+start_longitude+"&end_lat="+end_latitude+"&end_lng="+end_longitude;
 
-	// var xhttp = new XMLHttpRequest();
-	// xhttp.onreadystatechange = function() {
-	// 	if (this.readyState == 4 && this.status == 200) {
-	// 		document.getElementById("demo2").innerHTML = this.responseText;
-	// 	}
-	// };
-	// xhttp.open("GET", lyft_estimates_url, true);
-	// xhttp.setRequestHeader("Authorization", "bearer " + lyft_client_token);
-	// xhttp.send();
-
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
-	        var JSONObj = JSON.parse(this.responseText);
-	        document.getElementById("demo2").innerHTML = JSON.stringify(JSONObj);
-	        displayLyftEstimates(JSONObj);
-	    }
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("demo2").innerHTML = this.responseText;
+		}
 	};
-	xmlhttp.open("GET", "lyftPrices.json", true);
-	xmlhttp.send();
+	xhttp.open("GET", lyft_estimates_url, true);
+	xhttp.setRequestHeader("Authorization", "bearer " + lyft_client_token);
+	xhttp.send();
+
+	// var xmlhttp = new XMLHttpRequest();
+	// xmlhttp.onreadystatechange = function() {
+	//     if (this.readyState == 4 && this.status == 200) {
+	//         var JSONObj = JSON.parse(this.responseText);
+	//         document.getElementById("demo2").innerHTML = JSON.stringify(JSONObj);
+	//         displayLyftEstimates(JSONObj);
+	//     }
+	// };
+	// xmlhttp.open("GET", "lyftPrices.json", true);
+	// xmlhttp.send();
 	
 }
 

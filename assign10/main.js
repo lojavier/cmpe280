@@ -170,5 +170,5 @@ function updateLiquidGauge()
 $(document).ready(function() {
     displayHighchart();
     displayLiquidGauge();
-    setInterval(function(){displayHighchart();updateLiquidGauge();}, 10000);
+    setInterval(function(){displayHighchart();updateLiquidGauge();}, 300000);
 });
