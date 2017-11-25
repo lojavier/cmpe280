@@ -327,3 +327,201 @@ function displayLyftEstimates(JSONObj) {
 	}
 	document.getElementById("demo2-0").innerHTML = temp;
 }
+
+var x = document.getElementById("demoloc");
+
+function initGeolocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(initMap, showError);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+        initMap(null);
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+}
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+
+var directionsService = null;
+var directionsDisplay = null;
+var geocoder = null;
+var map = null;
+var pickup_lat = 37.3367759;
+var pickup_lng = -121.8785638;
+var dropoff_lat = null;
+var dropoff_lng = null;
+var routeFlag = [false,false];
+
+function initMap(position) {
+	if(position) {
+		pickup_lat = position.coords.latitude;
+		pickup_lng = position.coords.longitude;
+		x.innerHTML = "Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude;
+	}
+
+	directionsService = new google.maps.DirectionsService;
+    directionsDisplay = new google.maps.DirectionsRenderer;
+    geocoder = new google.maps.Geocoder();
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat: pickup_lat, lng: pickup_lng},
+		zoom: 14,
+		mapTypeControl: false,
+		fullscreenControl: false,
+		streetViewControl: false,
+		zoomControl: false
+	});
+	
+	directionsDisplay.setMap(map);
+
+	var tripRouteDisplay = document.getElementById('trip-route-display');
+	map.controls[google.maps.ControlPosition.TOP_CENTER].push(tripRouteDisplay);
+
+	var input = [];
+	input.push(document.getElementById('pickup-input'));
+	input.push(document.getElementById('dropoff-input'));
+	// var pickupInput = document.getElementById('pickup-input');
+	// var dropoffInput = document.getElementById('dropoff-input');
+
+	var autocomplete = [false,false];
+	for(var i = 0; i < autocomplete.length; i++)
+	{
+		autocomplete[i] = new google.maps.places.Autocomplete(input[i]);
+		autocomplete[i].bindTo('bounds', map);
+		var marker = new google.maps.Marker({
+			map: map,
+			anchorPoint: new google.maps.Point(0, -29)
+		});
+		autocomplete[i].addListener('place_changed', makeAutocompleteCallback(marker, autocomplete[i]));
+	}
+
+	geocodeAddress(); // Ran once at load
+
+	// document.getElementById('pickup-input').addEventListener('change', onChangeHandler);
+ //    document.getElementById('dropoff-input').addEventListener('change', onChangeHandler);
+ 	// document.getElementById('pickup-input').addEventListener('blur', onChangeHandler);
+  //   document.getElementById('dropoff-input').addEventListener('blur', onChangeHandler);
+}
+
+function calculateAndDisplayRoute() {
+	if(routeFlag[0] == true && routeFlag[1] == true) 
+	{
+		directionsService.route({
+			origin: document.getElementById('pickup-input').value,
+			destination: document.getElementById('dropoff-input').value,
+			travelMode: 'DRIVING'
+		}, function(response, status) {
+			if (status === 'OK') {
+				directionsDisplay.setDirections(response);
+			} else {
+				// alert('ROUTE FAILED: ' + status);
+			}
+		});
+	}
+}
+
+function makeAutocompleteCallback(marker, autocomplete) {
+	var autocompleteCallback = function() {
+		// alert("address changed");
+		marker.setVisible(false);
+		var place = autocomplete.getPlace();
+		if (!place.geometry) {
+			alert("Error: Not valid address/route");
+			return;
+		}
+
+		if (place.geometry.viewport) {
+			map.fitBounds(place.geometry.viewport);
+		} else {
+			map.setCenter(place.geometry.location);
+			map.setZoom(17);  // Why 17? Because it looks good.
+		}
+		marker.setPosition(place.geometry.location);
+		marker.setVisible(true);
+
+		geocodeAddress();
+	}
+	return autocompleteCallback;
+}
+
+function geocodeAddress() {
+	var pickup_address = document.getElementById('pickup-input').value;
+	var dropoff_address = document.getElementById('dropoff-input').value;
+
+	var address = [pickup_address, dropoff_address];
+	// address.push(pickup_address);
+	// address.push(dropoff_address);
+
+	for(var addressIndex = 0; addressIndex < address.length; addressIndex++)
+	{
+		// alert(address[addressIndex]);
+		geocoder.geocode({'address': address[addressIndex]}, makeGeocodeCallback(addressIndex));
+	}
+}
+
+function makeGeocodeCallback(addressIndex) {
+	// alert("addressIndex: " + JSON.stringify(addressIndex));
+	var geocodeCallback = function(results, status) {
+		if (status === 'OK') {
+			var obj = JSON.parse(JSON.stringify(results));
+			var latitude = obj[0].geometry.location.lat;
+			var longitude = obj[0].geometry.location.lng;
+			// if(addressIndex == 0)
+			// {
+			// 	map.setCenter(results[0].geometry.location);
+			// 	var marker = new google.maps.Marker({
+			// 		map: map,
+			// 		position: results[0].geometry.location
+			// 	});
+			// }
+			// alert("addressIndex: " + addressIndex);
+			setLatLng(addressIndex, latitude, longitude);
+			calculateAndDisplayRoute();
+		} else {
+			// alert('Geocode was not successful for the following reason: ' + status);
+			resetLatLng(addressIndex, latitude, longitude);
+		}
+	};
+	return geocodeCallback;
+}
+
+function setLatLng(addressIndex, latitude, longitude) {
+	// alert("addressIndex: " + addressIndex + "\nlatitude: " + latitude + "\nlongitude: " + longitude);
+	if(addressIndex == 0) {
+		pickup_lat = latitude;
+		pickup_lng = longitude;
+		
+	} else {
+		dropoff_lat = latitude;
+		dropoff_lng = longitude;
+	}
+	routeFlag[addressIndex] = true;
+}
+
+function resetLatLng(addressIndex, latitude, longitude) {
+	if(addressIndex == 0) {
+		pickup_lat = null;
+		pickup_lng = null;
+	} else {
+		dropoff_lat = null;
+		dropoff_lng = null;
+	}
+	routeFlag[addressIndex] = false;
+}
