@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/main.js"></script>
 
 	<style>
 	body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
@@ -19,41 +20,6 @@
 	</style>
 </head>
 <body class="w3-light-grey">
-
-<!-- <div class="pac-card" id="pac-card">
-      <div>
-        <div id="title">
-          Autocomplete search
-        </div>
-        <div id="type-selector" class="pac-controls">
-          <input type="radio" name="type" id="changetype-all" checked="checked">
-          <label for="changetype-all">All</label>
-
-          <input type="radio" name="type" id="changetype-establishment">
-          <label for="changetype-establishment">Establishments</label>
-
-          <input type="radio" name="type" id="changetype-address">
-          <label for="changetype-address">Addresses</label>
-
-          <input type="radio" name="type" id="changetype-geocode">
-          <label for="changetype-geocode">Geocodes</label>
-        </div>
-        <div id="strict-bounds-selector" class="pac-controls">
-          <input type="checkbox" id="use-strict-bounds" value="">
-          <label for="use-strict-bounds">Strict Bounds</label>
-        </div>
-      </div>
-      <div id="pac-container">
-        <input id="pac-input" type="text"
-            placeholder="Enter a location">
-      </div>
-    </div>
-    <div id="map"></div>
-    <div id="infowindow-content">
-      <img src="" width="16" height="16" id="place-icon">
-      <span id="place-name"  class="title"></span><br>
-      <span id="place-address"></span>
-    </div> -->
 
 <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
 	<a href="#" class="w3-bar-item w3-button w3-text-red w3-hover-red"><b><i class="fa fa-map-marker w3-margin-right"></i>Logo</b></a>
@@ -87,50 +53,6 @@
 </div> -->
 
 <div class="w3-content" style="max-width:100%;">
-
-    <!-- <div class="w3-container w3-margin-top">
-        <h3>Compare Rideshare Fares</h3>
-    </div> -->
-
-    <!-- <div class="w3-row-padding w3-text-white w3-large">
-        <div class="w3-half w3-margin-bottom">
-            <div class="w3-display-container">
-                <img src="https://www.w3schools.com/w3images/cinqueterre.jpg" alt="Cinque Terre" style="width:100%">
-                <span class="w3-display-bottomleft w3-padding">Cinque Terre</span>
-            </div>
-        </div>
-
-        <div class="w3-half">
-            <div class="w3-row-padding" style="margin:0 -16px">
-                <div class="w3-half w3-margin-bottom">
-                    <div class="w3-display-container">
-                        <img src="https://www.w3schools.com/w3images/newyork2.jpg" alt="New York" style="width:100%">
-                        <span class="w3-display-bottomleft w3-padding">New York</span>
-                    </div>
-                </div>
-                <div class="w3-half w3-margin-bottom">
-                    <div class="w3-display-container">
-                        <img src="https://www.w3schools.com/w3images/sanfran.jpg" alt="San Francisco" style="width:100%">
-                        <span class="w3-display-bottomleft w3-padding">San Francisco</span>
-                    </div>
-                </div>
-            </div>
-            <div class="w3-row-padding" style="margin:0 -16px">
-                <div class="w3-half w3-margin-bottom">
-                    <div class="w3-display-container">
-                        <img src="https://www.w3schools.com/w3images/pisa.jpg" alt="Pisa" style="width:100%">
-                        <span class="w3-display-bottomleft w3-padding">Pisa</span>
-                    </div>
-                </div>
-                <div class="w3-half w3-margin-bottom">
-                    <div class="w3-display-container">
-                        <img src="https://www.w3schools.com/w3images/paris.jpg" alt="Paris" style="width:100%">
-                        <span class="w3-display-bottomleft w3-padding">Paris</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <div class="w3-container w3-center">
         <h3>Compare Rideshare Fares</h3>
@@ -202,48 +124,7 @@
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
 
-<script>
-// Tabs
-// function openLink(evt, linkName) {
-//   var i, x, tablinks;
-//   x = document.getElementsByClassName("myLink");
-//   for (i = 0; i < x.length; i++) {
-//       x[i].style.display = "none";
-//   }
-//   tablinks = document.getElementsByClassName("tablink");
-//   for (i = 0; i < x.length; i++) {
-//       tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-//   }
-//   document.getElementById(linkName).style.display = "block";
-//   evt.currentTarget.className += " w3-red";
-// }
-// // Click on the first tablink on load
-// document.getElementsByClassName("tablink")[0].click();
-</script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApJGzCllhUXaFxRLxToaHDiQECpbK67P0&libraries=places&callback=initGeolocation" async defer></script>
-
-
-<h1>The XMLHttpRequest Object</h1>
-
-<button type="button" onclick="loadDoc()">Request data</button>
-<!-- <button type="button" onclick="testAPI()">Request data</button> -->
-
-<p id="demo"></p>
-
-<button type="button" onclick="getPriceEstimates()">Get Price Estimates</button>
-<p id="results"></p>
-
-<button type="button" onclick="getUberEstimates()">Get Uber</button>
-<p id="demo1"></p>
-<p id="demo1-0"></p>
-
-<button type="button" onclick="getLyftEstimates()">Get Lyft</button>
-<p id="demo2"></p>
-<p id="demo2-0"></p>
-
-<script src="js/main.js"></script>
-
 
 </body>
 </html>
