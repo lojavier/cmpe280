@@ -26,7 +26,7 @@
 	<a href="#" class="w3-bar-item w3-button w3-right w3-hover-red w3-text-grey"><i class="fa fa-search"></i></a>
 </div>
 
-<div class="w3-display-container w3-content w3-border-bottom" id="map" style="height:91%; width:100%; max-width: 100%">
+<div class="w3-display-container w3-content w3-border-bottom" id="map" style="height:92%; width:100%; max-width: 100%">
 </div>
 
 <div class="w3-display-container" id="trip-route-display" style="width:80%">
@@ -52,13 +52,22 @@
     <p id="error"></p>
 </div> -->
 
-<div class="w3-content" style="max-width:100%;">
+<div class="w3-content" id="fare-estimates" style="max-width:100%;">
 
     <div class="w3-container w3-center">
         <h3>Compare Rideshare Fares</h3>
     </div>
 
-    <div class="w3-row-padding">
+    <div class="w3-row-padding" id="fare-compare-row-0"></div>
+    <div class="w3-row-padding" id="fare-compare-row-1"></div>
+    <div class="w3-row-padding" id="fare-compare-row-2"></div>
+    <div class="w3-row-padding" id="fare-compare-row-3"></div>
+    <div class="w3-row-padding" id="fare-compare-row-4"></div>
+    <div class="w3-row-padding" id="fare-compare-row-5"></div>
+    <div class="w3-row-padding" id="fare-compare-row-6"></div>
+    <div class="w3-row-padding" id="fare-compare-row-7"></div>
+
+    <!-- <div class="w3-row-padding" id="fare-compare-row-6">
         <div class="w3-half w3-margin-bottom">
             <img src="images/uber_logo.jpg" alt="Uber" style="width:100%;">
             <div class="w3-container w3-white">
@@ -79,50 +88,45 @@
                 <button class="w3-button w3-margin-bottom">Request Ride <span class="glyphicon glyphicon-new-window"></span></button>
             </div>
         </div>
-    </div>
+    </div> -->
 
-  <!-- Newsletter -->
-  <div class="w3-container">
+    <!-- <div class="w3-container">
     <div class="w3-panel w3-padding-16 w3-black w3-opacity w3-card w3-hover-opacity-off">
-      <h2>Get the best offers first!</h2>
-      <p>Join our newsletter.</p>
-      <label>E-mail</label>
-      <input class="w3-input w3-border" type="text" placeholder="Your Email address">
-      <button type="button" class="w3-button w3-red w3-margin-top">Subscribe</button>
+    <h2>Get the best offers first!</h2>
+    <p>Join our newsletter.</p>
+    <label>E-mail</label>
+    <input class="w3-input w3-border" type="text" placeholder="Your Email address">
+    <button type="button" class="w3-button w3-red w3-margin-top">Subscribe</button>
     </div>
-  </div>
+    </div>
   
-  <!-- Contact -->
-  <div class="w3-container">
+    <div class="w3-container">
     <h2>Contact</h2>
     <p>Let us book your next trip!</p>
     <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>
     <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
     <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
     <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="Email"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" required name="Message"></p>
-      <p><button class="w3-button w3-black w3-padding-large" type="submit">SEND MESSAGE</button></p>
+    <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
+    <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="Email"></p>
+    <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" required name="Message"></p>
+    <p><button class="w3-button w3-black w3-padding-large" type="submit">SEND MESSAGE</button></p>
     </form>
-  </div>
-  
-<!-- End page content -->
+    </div> -->
 </div>
 
-<!-- Footer -->
-<footer class="w3-container w3-center w3-opacity w3-margin-bottom">
-  <h5>Find Us On</h5>
-  <div class="w3-xlarge w3-padding-16">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-  </div>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
+<!-- <footer class="w3-container w3-center w3-opacity w3-margin-bottom">
+<h5>Find Us On</h5>
+<div class="w3-xlarge w3-padding-16">
+<i class="fa fa-facebook-official w3-hover-opacity"></i>
+<i class="fa fa-instagram w3-hover-opacity"></i>
+<i class="fa fa-snapchat w3-hover-opacity"></i>
+<i class="fa fa-pinterest-p w3-hover-opacity"></i>
+<i class="fa fa-twitter w3-hover-opacity"></i>
+<i class="fa fa-linkedin w3-hover-opacity"></i>
+</div>
+<p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer> -->
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApJGzCllhUXaFxRLxToaHDiQECpbK67P0&libraries=places&callback=initGeolocation" async defer></script>
 

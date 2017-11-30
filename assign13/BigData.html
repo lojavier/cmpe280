@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Big Data page</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/navbar.css" rel="stylesheet">
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.flexslider.js"></script>
+
+
+    <script>
+
+        $(window).load(function(){
+            console.log($('.flexslider2'));
+            $('.flexslider2').flexslider({
+                animation: "slide",
+                direction: "vertical",
+                directionNav: false,
+                controlNav: false
+
+            });
+        });
+
+
+    </script>
+
+    
+</head>
+
+<body>
+
+<div class="container">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               
+            </div>
+
+
+          
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="./Home.html">Home</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Products<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./Mobile.html">Cloud Products</a></li>
+                        <li><a href="./Iot.html">IoT products</a></li>
+                        <li><a href="./BigData.html">Big Data products</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./AboutUs.html">Our Company</a></li>
+                        <li><a href="./AboutUs.html#ourTeam">Executive Team</a></li>
+                        <li><a href="./Locations.html">Location</a></li>
+                    </ul>
+                </li>
+              </ul>
+            </div>
+
+
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <div align="center">
+                    <p><b>BROCHURE</b></p>
+                </div>
+                <div style="border-right: thick solid #eee; font-size: 20px" align="center">
+                    <a href="files/ENGR280_ResearchPaper_Rev1_040215.pdf" download><button type="button"  style="font-size: 20px" class="btn btn-info btn-sm"><span ></span>Download</button></a>
+                </div>
+                <br>
+                <div align="center">
+                    <p><b>WHITE PAPER</b></p>
+                </div>
+                <div style="border-right: thick solid #eee;" align="center">
+                    <a href="files/ENGR280_ResearchPaper_Rev1_040215.pdf" download><button type="button" style="font-size: 20px" class="btn btn-info btn-sm"><span ></span>Download</button></a>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <h2 align="center">Big Data</h2>
+                <p align="justify" class="lead" style="font-size: 19px;" >The Big Data technology and services market represents a fast-growing multibillion-dollar
+                    worldwide opportunity. In fact, a recent IDC forecast shows that the Big Data technology
+                    and services market will grow at a 26.4% compound annual growth rate to $41.5 billion
+                    through 2018, or about six times the growth rate of the overall information technology market.
+                    Additionally, by 2020 IDC believes that line of business buyers will help drive analytics beyond
+                    its historical sweet spot of relational (performance management) to the double-digit growth
+                    rates of real-time intelligence and exploration/discovery of the unstructured worlds.
+                </p>
+            <div align="center">
+                <iframe width="460" height="315" src="https://www.youtube.com/embed/j-0cUmUyb-Y" frameborder="0" allowfullscreen></iframe>
+            </div>
+            </div><!-- /.col-lg-6 -->
+
+            <div class="col-lg-3">
+
+                <p style="padding-left: 50px;"><b>Client Feedbacks</b></p>
+
+                <div class="flexslider2">
+                    <ul class="slides">
+
+                        <li style="max-width: 200px;  width: 100%;">
+                            <div><blockquote style="font-size: 15px;">
+                                <p>"We have worked with each other for 7 projects now , they give the best products and services, keep up the great work guys. " <br> -abc corp
+                                </p>
+                                </blockquote>
+                            </div>
+                            <div><blockquote style="font-size: 15px;">
+                                <p>"They are brilliant in what they do , making it easier for us to build our products." <br> -pqr corp</p>
+                                </blockquote>
+                            </div>
+                            <div><blockquote style="font-size: 15px;">
+                                <p>"They helped is every step of the prduct purchasing and service, this is the best people er have ever been in business with"
+                                    <br>
+                                -xyzcorp</p>
+                                </blockquote>
+                            </div>
+                        </li>
+
+                        
+
+                    </ul>
+                </div>
+
+            </div><!-- /.col-lg-3 -->
+        </div><!-- /.row -->
+
+
+    </div>
+
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2017 Weblegion, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+</div> 
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

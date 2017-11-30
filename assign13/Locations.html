@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Location page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/navbar.css" rel="stylesheet">
+    <style>
+      #map-canvas-West {
+        width: 500px;
+        height: 400px;
+      }
+      #map-canvas-East {
+        width: 500px;
+        height: 400px;
+      }
+    </style>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.flexslider.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?keyR3GCtho6rSDSk=-XK6q2ev9-&callback=initialize"
+    async defer></script>
+
+    <!-- script to initialise the map -->
+    <script>
+      function initialize() {
+        var mapCanvasWest = document.getElementById('map-canvas-West');
+        var mapCanvasEast = document.getElementById('map-canvas-East');
+        var myLatlngWest = new google.maps.LatLng(37.7749, -122.4194);
+        var myLatlngEast = new google.maps.LatLng(40.7128, -74.0060);
+        var mapOptionsWest = {
+          center: myLatlngWest,
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var mapOptionsEast = {
+          center: myLatlngEast,
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var mapWest = new google.maps.Map(mapCanvasWest, mapOptionsWest)
+        var mapEast = new google.maps.Map(mapCanvasEast, mapOptionsEast)
+
+        var markerWest = new google.maps.Marker({
+            position: myLatlngWest,
+            map: mapWest,
+        });
+        var markerEast = new google.maps.Marker({
+            position: myLatlngEast,
+            map: mapEast,
+        });
+        var addressWest = '<div id="content">'+
+                 '<div id="address">'+
+                 '<h4> <b>555 E Washington Ave </b></h4>'+
+                 '</div>'+
+                 '<div id="bodyContent">'+
+                 '<p>Sunnyvale, CA 94086</p>' +  
+                 '<a href = ""> View On Google Maps </a>'+
+                 '</div>'+
+                 '</div>' ;
+        var addressEast = '<div id="content">'+
+                 '<div id="address">'+
+                 '<h4> <b>234 W 42nd street </b></h4>'+
+                 '</div>'+
+                 '<div id="bodyContent">'+
+                 '<p>New York, NY 10036</p>' +  
+                 '<a href = ""> View On Google Maps </a>'+
+                 '</div>'+
+                 '</div>' ;
+        
+        var infowindowWest = new google.maps.InfoWindow({
+                  content: addressWest   
+                });
+        var infowindowEast = new google.maps.InfoWindow({ 
+                  content: addressEast   
+                });
+        makeInfoWindowEvent(mapWest, infowindowWest, markerWest);
+        makeInfoWindowEvent(mapEast, infowindowEast, markerEast);
+ 
+        }
+        
+        function makeInfoWindowEvent(map, infowindow, marker) {
+            google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+            });
+        }
+ 
+       google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+    </head>
+
+<body>
+
+<div class="container">
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+              
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="./Home.html">Home</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Products<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./Mobile.html">Mobile Products</a></li>
+                        <li><a href="./Iot.html">IoT Products</a></li>
+                        <li><a href="./BigData.html">Big Data Products</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./AboutUs.html">Our Company</a></li>
+                        <li><a href="./AboutUs.html#ourTeam">Executive Team</a></li>
+                        <li><a href="./Locations.html">Location</a></li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
+        </div><!--/.container-fluid -->
+    </nav>
+<div class="container">
+    <h2 class="text-center">Our Locations</h2>
+    <div class="row">
+        <div class="col-md-6 ">
+            <h3> San Fransisco, USA. </h3>
+            <div class="classWithPad" id="map-canvas-West"></div>
+        </div>
+        <div class="col-md-6">
+            <h3> New York, USA. </h3>
+            <div class="classWithPad"   id="map-canvas-East"></div>
+        </div>
+    </div> <!--ending row -->
+
+
+
+      <hr class="featurette-divider">
+
+    
+    <!-- FOOTER -->
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2015 WebLegion, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+</div> <!--ending container -->
+   
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="./js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="./js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>
