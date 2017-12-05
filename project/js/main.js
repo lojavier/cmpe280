@@ -301,30 +301,118 @@ function getUberEstimates() {
 	// };
 	// xmlhttp.open("GET", uber_estimates_url, true);
 	// xmlhttp.send();
-	
-	// $.ajax({
-	// 	url: 'https://localhost:3001/jsonp/results?callback=refreshSection',
-	// 	jsonp: 'refreshSection',
-	// 	dataType: "jsonp",
+
+	// $.getJSON("https://api.uber.com/v1.2/estimates/price", {
+ //        start_latitude: pickup_lat,
+	//     start_longitude: pickup_lng,
+	//     end_latitude: dropoff_lat,
+	//     end_longitude: dropoff_lng,
+	//     server_token: uber_server_token
+ //    })
+	// .done(function() {
+	// 	console.log( "second success" );
+	// })
+	// .fail(function( jqxhr, textStatus, error ) {
+	//     var err = textStatus + ", " + error;
+	//     console.log( "Request Failed: " + err );
+	// })
+	// .always(function() {
+	// 	console.log( "complete" );
 	// });
 
 	$.ajax({
-        url: "http://127.0.0.1:5000/get_uber_estimates",
-        type: "POST",
-        datatype:"json",
-        data: {	'pickup_lat':pickup_lat,
-        		'pickup_lng':pickup_lng,
-        		'dropoff_lat':dropoff_lat,
-        		'dropoff_lng':dropoff_lng
-    	},
-        success: function(response){
-        	var JSONObj = JSON.parse(response);
-            displayUberEstimates(JSONObj);
-        },
-        error: function(err){
-        	console.log(JSON.stringify(err));
-        }
-    });
+		url: "https://api.uber.com/v1.2/estimates/price",
+		headers: {
+			Authorization: "Token " + uber_server_token
+		},
+		data: {
+			start_latitude: pickup_lat,
+		    start_longitude: pickup_lng,
+		    end_latitude: dropoff_lat,
+		    end_longitude: dropoff_lng
+		},
+		type: "GET",
+		datatype:"jsonp",
+		jsonp: 'refreshSection',
+		success: function(result) {
+			console.log(result);
+		}
+	});
+
+	// $.ajax({
+	// 	// url: uber_estimates_url+'&callback=refreshSection',
+	// 	url: uber_estimates_url,
+	// 	dataType: 'jsonp',
+	// 	// jsonpCallback: 'callback',
+	// 	// jsonp: 'refreshSection',
+	// 	jsonpCallback: 'refreshSection',
+	// 	// data: {
+	//  //        start_latitude: pickup_lat,
+	// 	//     start_longitude: pickup_lng,
+	// 	//     end_latitude: dropoff_lat,
+	// 	//     end_longitude: dropoff_lng,
+	// 	//     seat_count:2
+	//  //    },
+	//     success: function(response) {
+	//     	alert(response);
+	//         console.log(response);
+	//     },
+	//     error: function(error) {
+	//     	console.log(error);
+	//     }
+	// });
+
+	// $.ajax({
+	// 	url: uber_estimates_url+'&callback=refreshSection',
+	// 	type: "GET",
+	// 	data: {
+	//         start_latitude: pickup_lat,
+	// 	    start_longitude: pickup_lng,
+	// 	    end_latitude: dropoff_lat,
+	// 	    end_longitude: dropoff_lng,
+	// 	    server_token: uber_server_token
+	//     },
+	// 	dataType: "jsonp",
+	// });
+	// console.log(uber_estimates_url);
+	// var script = document.createElement("script");
+	// script.type = "text/javascript";
+ // //    s.async = true;
+ //    script.src = uber_estimates_url+"&callback=refreshSection";
+ //    // document.body.appendChild(s);
+ //    console.log(script);
+ //    document.getElementsByTagName('head')[0].appendChild(script);
+
+	// script = document.createElement("script");
+	// script.type = "text/javascript";
+	// script.src = uber_estimates_url+"?callback=refreshSection";
+
+	// $.getJSON(uber_estimates_url+"&callback=?", function(result){
+ //   	//response data are now in the result variable
+	//    alert(result);
+	// });
+
+	// $.ajax({
+ //        url: "http://127.0.0.1:5000/get_uber_estimates",
+ //        type: "POST",
+ //        datatype:"json",
+ //        data: {	'pickup_lat':pickup_lat,
+ //        		'pickup_lng':pickup_lng,
+ //        		'dropoff_lat':dropoff_lat,
+ //        		'dropoff_lng':dropoff_lng
+ //    	},
+ //        success: function(response){
+ //        	var JSONObj = JSON.parse(response);
+ //            displayUberEstimates(JSONObj);
+ //        },
+ //        error: function(err){
+ //        	console.log(JSON.stringify(err));
+ //        }
+ //    });
+}
+
+function refreshSection(json) {
+	console.log(json);
 }
 
 function displayUberEstimates(JSONObj) {
