@@ -13,6 +13,8 @@ var pickup_lng = -121.8785638;	// Default
 var dropoff_lat = null;
 var dropoff_lng = null;
 var routeFlag = [false,false];
+var lyft_prices = [0,0,0,0,0,0,0,0];
+var uber_prices = [0,0,0,0,0,0,0,0];
 
 function initGeolocation() {
     if (navigator.geolocation) {
@@ -214,11 +216,6 @@ function calculateAndDisplayRoute() {
 }
 
 function getLyftEstimates() {
-	/*
-	curl --include -X GET -H 'Authorization: bearer Uz0CSUD07d/xef+lDlG0nvNa0KkybaHXmdjGZem1OLfxfL0E2PBgwCjEEwRzOsTlEkg8PQ1i43U7l4IHVTSw0hGYEDBXA9uL39rkagTt9beOmbBpwQN0eoA=' \
-	'https://api.lyft.com/v1/cost?start_lat=37.3120321&start_lng=-121.95222860000001&end_lat=37.3844772&end_lng=-121.93272890000003'
-	*/
-
 	var lyft_client_id = "GOVksbfrhvtf";
 	var lyft_client_token = "Uz0CSUD07d/xef+lDlG0nvNa0KkybaHXmdjGZem1OLfxfL0E2PBgwCjEEwRzOsTlEkg8PQ1i43U7l4IHVTSw0hGYEDBXA9uL39rkagTt9beOmbBpwQN0eoA=";
 	var lyft_client_secret = "ItZ4rCtEeAWnRKqShT-jlCh7I5TLHtUW";
@@ -275,13 +272,13 @@ function displayLyftEstimates(JSONObj,lyft_client_id) {
 		results[index] = JSONObj.cost_estimates[i];
 	}
 
-	var lyft_deep_link = "https://lyft.com/ride";
-	// if( screen.width <= 480 ) {     
-	// 	lyft_deep_link += "ul/";
-	// }
-	
-	for (var i = 0; i < results.length; i++) 
+	lyft_prices = [];
+
+	var lyft_deep_link = "https://lyft.com/ride";	
+	for (var i = 0; i < results.length; i++)
 	{
+		lyft_prices.push(parseFloat((results[i].estimated_cost_cents_min/100).toFixed(2)));
+
 		var lyft_app_link = lyft_deep_link+"?id="+results[i].ride_type+"&partner="+lyft_client_id+"&pickup[latitude]="+pickup_lat+"&pickup[longitude]="+pickup_lng+"&destination[latitude]="+dropoff_lat+"&destination[longitude]="+dropoff_lng;
 
 		$("#lyft-estimate-"+i).html("");
@@ -300,76 +297,6 @@ function displayLyftEstimates(JSONObj,lyft_client_id) {
 }
 
 function getUberEstimates() {
-	/*
-	curl -H 'Authorization: Token RUOqYOd-IgBcjFQ4J8mHc7ixW3vD9nRX3-f_Llrn' \
-	     -H 'Accept-Language: en_US' \
-	     -H 'Content-Type: application/json' \
-	     'https://api.uber.com/v1.2/estimates/price?start_latitude=37.3120321&start_longitude=-121.95222860000001&end_latitude=37.3844772&end_longitude=-121.93272890000003&server_token=RUOqYOd-IgBcjFQ4J8mHc7ixW3vD9nRX3-f_Llrn'
-	*/
-
-	/*
-	curl -H "Authorization: Bearer KA.eyJ2ZXJzaW9uIjoyLCJpZCI6InB6YnJrZzNlU0RLSlpacGZkNnhacUE9PSIsImV4cGlyZXNfYXQiOjE1MTUyMjMyNDUsInBpcGVsaW5lX2tleV9pZCI6Ik1RPT0iLCJwaXBlbGluZV9pZCI6MX0.IO22hUn1WE8v4CioDz-S4O_CfWl6hoQSJFxm4BteMvw" \
-	"https://api.uber.com/v1.2/products?latitude=37.7752278&longitude=-122.4197513"
-
-	curl "https://api.uber.com/v1.2/products?latitude=37.7752278&longitude=-122.4197513&access_token=KA.eyJ2ZXJzaW9uIjoyLCJpZCI6InB6YnJrZzNlU0RLSlpacGZkNnhacUE9PSIsImV4cGlyZXNfYXQiOjE1MTUyMjMyNDUsInBpcGVsaW5lX2tleV9pZCI6Ik1RPT0iLCJwaXBlbGluZV9pZCI6MX0.IO22hUn1WE8v4CioDz-S4O_CfWl6hoQSJFxm4BteMvw"
-	*/
-
-	/*
-	curl -X POST \
-     -H "Authorization: Bearer KA.eyJ2ZXJzaW9uIjoyLCJpZCI6InB6YnJrZzNlU0RLSlpacGZkNnhacUE9PSIsImV4cGlyZXNfYXQiOjE1MTUyMjMyNDUsInBpcGVsaW5lX2tleV9pZCI6Ik1RPT0iLCJwaXBlbGluZV9pZCI6MX0.IO22hUn1WE8v4CioDz-S4O_CfWl6hoQSJFxm4BteMvw" \
-     -H 'Accept-Language: en_US' \
-     -H 'Content-Type: application/json' \
-     -d '{
-       "start_latitude": 37.7752278,
-       "start_longitude": -122.4197513,
-       "end_latitude": 37.7773228,
-       "end_longitude": -122.4272052
-     }' "https://api.uber.com/v1.2/requests/estimate"
-
-	curl -X PUT 'https://sandbox-api.uber.com/v1.2/requests/estimate' \
-     -H 'Authorization: Bearer KA.eyJ2ZXJzaW9uIjoyLCJpZCI6InB6YnJrZzNlU0RLSlpacGZkNnhacUE9PSIsImV4cGlyZXNfYXQiOjE1MTUyMjMyNDUsInBpcGVsaW5lX2tleV9pZCI6Ik1RPT0iLCJwaXBlbGluZV9pZCI6MX0.IO22hUn1WE8v4CioDz-S4O_CfWl6hoQSJFxm4BteMvw' \
-     -H 'Accept-Language: en_US' \
-     -H 'Content-Type: application/json' \
-	-d '{
-	  "fare": {
-	    "value": 5.73,
-	    "fare_id": "d30e732b8bba22c9cdc10513ee86380087cb4a6f89e37ad21ba2a39f3a1ba960",
-	    "expires_at": 1476953293,
-	    "display": "$5.73",
-	    "currency_code": "USD",
-	    "breakdown": [
-	     {
-	       "type": "promotion",
-	       "value": -2.00,
-	       "name": "Promotion"
-	     },
-	     {
-	       "type": "base_fare",
-	       "notice": "Fares are slightly higher due to increased demand",
-	       "value": 7.73,
-	       "name": "Base Fare"
-	     }
-	   ]
-	  },
-	  "trip": {
-	    "distance_unit": "mile",
-	    "duration_estimate": 540,
-	    "distance_estimate": 2.39
-	  },
-	  "pickup_estimate": 2
-	}'
-
-	curl -X POST 'https://sandbox-api.uber.com/v1.2/requests' \
-     -H 'Content-Type: application/json' \
-     -H 'Authorization: Bearer KA.eyJ2ZXJzaW9uIjoyLCJpZCI6InB6YnJrZzNlU0RLSlpacGZkNnhacUE9PSIsImV4cGlyZXNfYXQiOjE1MTUyMjMyNDUsInBpcGVsaW5lX2tleV9pZCI6Ik1RPT0iLCJwaXBlbGluZV9pZCI6MX0.IO22hUn1WE8v4CioDz-S4O_CfWl6hoQSJFxm4BteMvw' \
-     -d '{ "fare_id": "abcd", "product_id": "a1111c8c-c720-46c3-8534-2fcdd730040d", "start_latitude": 37.761492, "start_longitude": -122.423941, "end_latitude": 37.775393, "end_longitude": -122.417546 }'
-
-    */
-
-    /*
-	https://login.uber.com/oauth/v2/authorize?client_id=3JajizBicUQTjxJrh8R0iDgt_HUBCJWS&response_type=code&redirect_uri=https://52.90.66.201
-    */
-
 	var uber_access_token = "KA.eyJ2ZXJzaW9uIjoyLCJpZCI6InB6YnJrZzNlU0RLSlpacGZkNnhacUE9PSIsImV4cGlyZXNfYXQiOjE1MTUyMjMyNDUsInBpcGVsaW5lX2tleV9pZCI6Ik1RPT0iLCJwaXBlbGluZV9pZCI6MX0.IO22hUn1WE8v4CioDz-S4O_CfWl6hoQSJFxm4BteMvw";
 	var uber_client_id = "3JajizBicUQTjxJrh8R0iDgt_HUBCJWS";
 	var uber_client_secret = "5NAqxlNLlRMXne7TVyUzQgxR91fN6tMzkKQFgXNM";
@@ -395,52 +322,6 @@ function getUberEstimates() {
 	    	console.log(JSON.stringify(error));
 	    }
 	});
-
-	// $.ajax({
-	// 	url: "https://api.uber.com/v1.2/requests/estimate",
-	// 	type: "POST",
-	// 	headers: {
-	// 		'Authorization': 'Bearer ' + uber_access_token
-	// 	},
-	// 	contentType: "application/json",
-	// 	data: {
-	//         start_latitude: pickup_lat,
-	// 	    start_longitude: pickup_lng,
-	// 	    end_latitude: dropoff_lat,
-	// 	    end_longitude: dropoff_lng
-	//     },
-	// 	success: function(result,status,xhr) {
-	// 		console.log(JSON.stringify(result));
-	//         // displayUberEstimates(result,uber_client_id);
-	//     },
-	//     error: function(xhr,status,error) {
-	//     	console.log(JSON.stringify(xhr));
-	//     	console.log(JSON.stringify(status));
-	//     	console.log(JSON.stringify(error));
-	//     }
-	// });
-
-	// $.ajax({
-	// 	url: "https://api.uber.com/v1.2/requests/estimate",
-	// 	type: "GET",
-	// 	data: {
-	//         start_latitude: pickup_lat,
-	// 	    start_longitude: pickup_lng,
-	// 	    end_latitude: dropoff_lat,
-	// 	    end_longitude: dropoff_lng,
- //    		token_type: "Bearer",
- //    		access_token: uber_access_token
-	//     },
-	// 	success: function(result,status,xhr) {
-	// 		console.log(JSON.stringify(result));
-	//         // displayUberEstimates(result,uber_client_id);
-	//     },
-	//     error: function(xhr,status,error) {
-	//     	console.log(JSON.stringify(xhr));
-	//     	console.log(JSON.stringify(status));
-	//     	console.log(JSON.stringify(error));
-	//     }
-	// });
 }
 
 function displayUberEstimates(JSONObj,uber_client_id) {
@@ -490,12 +371,16 @@ function displayUberEstimates(JSONObj,uber_client_id) {
 		results[index] = JSONObj.prices[i];
 	}
 
+	uber_prices = [];
+
 	var uber_deep_link = "https://m.uber.com/";
 	if( screen.width <= 480 ) {     
 		uber_deep_link += "ul/";
 	}
 	for (var i = 0; i < results.length; i++) 
 	{
+		uber_prices.push(parseFloat(results[i].high_estimate));
+
 		var uri = uber_deep_link+"?client_id="+uber_client_id+"&action=setPickup&pickup[latitude]="+pickup_lat+"&pickup[longitude]="+pickup_lng+"&pickup[formatted_address]="+$("#pickup-input").val()+"&dropoff[latitude]="+dropoff_lat+"&dropoff[longitude]="+dropoff_lng+"&dropoff[formatted_address]="+$("#dropoff-input").val()+"&product_id="+results[i].product_id;
 		var uber_app_link = encodeURI(uri);
 
@@ -512,7 +397,54 @@ function displayUberEstimates(JSONObj,uber_client_id) {
             	<button class=\"w3-button w3-margin-bottom w3-blue-grey\" onclick=\"window.open(\'"+uber_app_link+"\');\">Request Ride <span class=\"glyphicon glyphicon-new-window\"></span></button> \
             </div>");
 	}
-	// https://m.uber.com/ul/?client_id=<CLIENT_ID>&action=setPickup&pickup[latitude]=37.775818&pickup[longitude]=-122.418028&pickup[nickname]=UberHQ&pickup[formatted_address]=1455%20Market%20St%2C%20San%20Francisco%2C%20CA%2094103&dropoff[latitude]=37.802374&dropoff[longitude]=-122.405818&dropoff[nickname]=Coit%20Tower&dropoff[formatted_address]=1%20Telegraph%20Hill%20Blvd%2C%20San%20Francisco%2C%20CA%2094133&product_id=a1111c8c-c720-46c3-8534-2fcdd730040d&link_text=View%20team%20roster&partner_deeplink=partner%3A%2F%2Fteam%2F9383
+}
+
+function displayHighchart()
+{
+    var ride_types = ["ECONOMY","STANDARD","STANDARD XL","PREMIUM","LUXURY","LUXURY XL","ASSIST","WAV"];
+
+    Highcharts.chart('highchart', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Rideshare Fare Comparison'
+        },
+        subtitle: {
+            text: 'Last Update: TODAY'
+        },
+        xAxis: {
+            categories: ride_types,
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Fare Price (USD)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b> ${point.y:.2f} USD</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Lyft',
+            data: lyft_prices
+        }, {
+            name: 'Uber',
+            data: uber_prices
+        }]
+    });
 }
 
 $(document).ready(function() {
@@ -520,4 +452,13 @@ $(document).ready(function() {
 	// $("#trip-route-display").hide();
 	$("#warning-div").hide();
 	$("#fare-estimates").hide();
+
+	$("#high-chart-toggle").click(function(){
+		displayHighchart();
+	});
+	$("#contact-btn").click(function(){
+		$('html, body').animate({
+	        scrollTop: $("#contact").offset().top
+	    }, 500);
+	});
 });
