@@ -71,7 +71,7 @@ function initMap(position) {
 
 	// var tripRouteDisplay = document.getElementById('trip-route-display');
 	// map.controls[google.maps.ControlPosition.TOP_CENTER].push(tripRouteDisplay);
-	$("#trip-route-display").show();
+	// $("#trip-route-display").show();
 
 	var input = [];
 	input.push(document.getElementById('pickup-input'));
@@ -199,6 +199,13 @@ function calculateAndDisplayRoute() {
 				getUberEstimates();
 				getLyftEstimates();
 				$("#fare-estimates").show();
+
+				setTimeout(function(){
+					// document.getElementById("fare-estimates").scrollIntoView(true);
+					$('html, body').animate({
+				        scrollTop: $("#fare-estimates").offset().top
+				    }, 1000);
+				}, 2000);
 			} else {
 				console.log('ROUTE FAILED: ' + status);
 			}
@@ -510,7 +517,7 @@ function displayUberEstimates(JSONObj,uber_client_id) {
 
 $(document).ready(function() {
 	warningMessage = document.getElementById("warning-message");
-	$("#trip-route-display").hide();
+	// $("#trip-route-display").hide();
 	$("#warning-div").hide();
 	$("#fare-estimates").hide();
 });

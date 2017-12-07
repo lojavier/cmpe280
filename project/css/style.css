@@ -1,15 +1,15 @@
 body,h1,h2,h3,h4,h5,h6 {
     font-family: "Raleway", Arial, Helvetica, sans-serif;
 }
-#map {
-    height: 83%;
-    width: 100%;
-    max-width: 100%;
-}
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+}
+#map {
+    height: 83%;
+    width: 100%;
+    max-width: 100%;
 }
 #logo {
     text-decoration: none;
