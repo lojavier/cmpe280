@@ -310,7 +310,7 @@ function getUberEstimates() {
 		    server_token: uber_server_token
 	    },
 		success: function(result,status,xhr) {
-	        displayUberEstimates(result);
+	        displayUberEstimates(result,uber_client_id);
 	    },
 	    error: function(xhr,status,error) {
 	    	console.log(JSON.stringify(xhr));
@@ -320,7 +320,7 @@ function getUberEstimates() {
 	});
 }
 
-function displayUberEstimates(JSONObj) {
+function displayUberEstimates(JSONObj,uber_client_id) {
 
 	var rideIndex = {
 		POOL:0,
@@ -369,6 +369,10 @@ function displayUberEstimates(JSONObj) {
 
 	for (var i = 0; i < results.length; i++) 
 	{
+		var uri = "https://m.uber.com/ul/?client_id="+uber_client_id+"&action=setPickup&pickup[latitude]="+pickup_lat+"&pickup[longitude]="+pickup_lng+"&pickup[formatted_address]="+$("#pickup-input").val()+"&dropoff[latitude]="+dropoff_lat+"&dropoff[longitude]="+dropoff_lng+"&dropoff[formatted_address]="+$("#dropoff-input").val()+"&product_id="+results[i].product_id;
+		// var uri = "https://m.uber.com/?client_id="+uber_client_id+"&action=setPickup&pickup[latitude]="+pickup_lat+"&pickup[longitude]="+pickup_lng+"&pickup[formatted_address]="+$("#pickup-input").val()+"&dropoff[latitude]="+dropoff_lat+"&dropoff[longitude]="+dropoff_lng+"&dropoff[formatted_address]="+$("#dropoff-input").val()+"&product_id="+results[i].product_id;
+		var uber_app_link = encodeURI(uri);
+
 		$("#uber-estimate-"+i).html("");
 		$("#uber-estimate-"+i).append(" \
 			<div class=\"w3-container w3-white w3-center\"> \
@@ -380,8 +384,10 @@ function displayUberEstimates(JSONObj) {
                 <p>"+Math.ceil(results[i].duration/60)+" mins (Estimated Ride Duration)</p> \
                 <p>"+results[i].distance+" miles (Estimated Ride Distance)</p> \
             	<button class=\"w3-button w3-margin-bottom w3-blue-grey\">Request Ride <span class=\"glyphicon glyphicon-new-window\"></span></button> \
+            	<a href=\""+uber_app_link+"\" target=\"_blank\">TEST</a> \
             </div>");
 	}
+	// https://m.uber.com/ul/?client_id=<CLIENT_ID>&action=setPickup&pickup[latitude]=37.775818&pickup[longitude]=-122.418028&pickup[nickname]=UberHQ&pickup[formatted_address]=1455%20Market%20St%2C%20San%20Francisco%2C%20CA%2094103&dropoff[latitude]=37.802374&dropoff[longitude]=-122.405818&dropoff[nickname]=Coit%20Tower&dropoff[formatted_address]=1%20Telegraph%20Hill%20Blvd%2C%20San%20Francisco%2C%20CA%2094133&product_id=a1111c8c-c720-46c3-8534-2fcdd730040d&link_text=View%20team%20roster&partner_deeplink=partner%3A%2F%2Fteam%2F9383
 }
 
 $(document).ready(function() {
