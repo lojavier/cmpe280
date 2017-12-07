@@ -6,6 +6,7 @@ var warningMessage = null;
 var directionsService = null;
 var directionsDisplay = null;
 var geocoder = null;
+var trafficLayer = null;
 var map = null;
 var pickup_lat = 37.3367759;	// Default
 var pickup_lng = -121.8785638;	// Default
@@ -54,6 +55,7 @@ function initMap(position) {
 	directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer;
     geocoder = new google.maps.Geocoder();
+    trafficLayer = new google.maps.TrafficLayer();
 
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: pickup_lat, lng: pickup_lng},
@@ -65,6 +67,7 @@ function initMap(position) {
 	});
 	
 	directionsDisplay.setMap(map);
+	trafficLayer.setMap(map);
 
 	var tripRouteDisplay = document.getElementById('trip-route-display');
 	map.controls[google.maps.ControlPosition.TOP_CENTER].push(tripRouteDisplay);
