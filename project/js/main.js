@@ -69,8 +69,8 @@ function initMap(position) {
 	directionsDisplay.setMap(map);
 	trafficLayer.setMap(map);
 
-	var tripRouteDisplay = document.getElementById('trip-route-display');
-	map.controls[google.maps.ControlPosition.TOP_CENTER].push(tripRouteDisplay);
+	// var tripRouteDisplay = document.getElementById('trip-route-display');
+	// map.controls[google.maps.ControlPosition.TOP_CENTER].push(tripRouteDisplay);
 	$("#trip-route-display").show();
 
 	var input = [];
