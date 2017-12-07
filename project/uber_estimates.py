@@ -10,12 +10,18 @@ from uber_rides.client import UberRidesClient
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/get_uber_estimates', methods=['POST'])
+# @app.route('/get_uber_estimates', methods=['POST'])
+@app.route('/get_uber_estimates')
 def get_uber_estimates():
-	start_lat = request.form['pickup_lat']
-	start_lng = request.form['pickup_lng']
-	end_lat = request.form['dropoff_lat']
-	end_lng = request.form['dropoff_lng']
+	print "TEST"
+	# start_lat = request.form['pickup_lat']
+	# start_lng = request.form['pickup_lng']
+	# end_lat = request.form['dropoff_lat']
+	# end_lng = request.form['dropoff_lng']
+	start_lat = 37.3367761
+	start_lng = -121.8785044
+	end_lat = 37.3183318
+	end_lng = -121.95104909999998
 	session = Session(server_token="RUOqYOd-IgBcjFQ4J8mHc7ixW3vD9nRX3-f_Llrn")
 	client = UberRidesClient(session)
 	response = client.get_price_estimates(
@@ -26,8 +32,11 @@ def get_uber_estimates():
 	    seat_count=2
 	)
 	estimate = response.json.get('prices')
+	print estimate
 	return json.dumps(estimate)
 
 if __name__=="__main__":
 	# app.run(ssl_context='adhoc')
-    app.run()
+	app.run(host='0.0.0.0',ssl_context='adhoc')
+    # app.run()
+    # app.run(host='0.0.0.0')

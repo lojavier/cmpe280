@@ -1,0 +1,31 @@
+body,h1,h2,h3,h4,h5,h6 {
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+}
+#map {
+    height: 92%;
+    width: 100%; 
+    max-width: 100%;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#trip-route-display {
+    width: 85%;
+}
+#fare-estimates {
+    max-width: 100%;
+}
+#address-input-row {
+    margin: 0px -16px;
+}
+#address-input-half {
+    margin: 0px 0px;
+    padding: 4px 4px;
+}
+#pickup-input,#dropoff-input {
+    padding: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
