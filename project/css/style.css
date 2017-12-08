@@ -39,5 +39,11 @@ html, body {
     font-weight: bold;
 }
 .modal-lg {
-    width: 98%;
+    width: 100%;
+}
+.modal-dialog {
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
 }

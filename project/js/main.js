@@ -15,6 +15,7 @@ var dropoff_lng = null;
 var routeFlag = [false,false];
 var lyft_prices = [0,0,0,0,0,0,0,0];
 var uber_prices = [0,0,0,0,0,0,0,0];
+var now = new Date();
 
 function initGeolocation() {
     if (navigator.geolocation) {
@@ -198,6 +199,7 @@ function calculateAndDisplayRoute() {
 		}, function(response, status) {
 			if (status === 'OK') {
 				directionsDisplay.setDirections(response);
+				now = new Date();
 				getUberEstimates();
 				getLyftEstimates();
 				$("#fare-estimates").show();
@@ -411,7 +413,7 @@ function displayHighchart()
             text: 'Rideshare Fare Comparison'
         },
         subtitle: {
-            text: 'Last Update: TODAY'
+            text: 'Last Update: ' + now
         },
         xAxis: {
             categories: ride_types,
