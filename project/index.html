@@ -18,8 +18,9 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js"></script>
 </head>
-
 <body class="w3-light-grey">
+
+<!-- <div id="google_translate_element"></div> -->
 
 <nav class="navbar navbar-default w3-bar w3-white w3-border-bottom w3-xlarge">
     <div class="navbar-header">
@@ -47,9 +48,21 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="#"><span id="google_translate_element"></span></a></li>
         </ul>
     </div>
 </nav>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'en', 
+        includedLanguages: 'ar,de,en,es,fr,hi,it,ja,ko,pt,ru,tl,vi,zh-TW', 
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <div class="w3-display-container" id="trip-route-display">
     <div class="w3-container w3-white w3-padding">
